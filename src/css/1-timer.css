@@ -44,6 +44,11 @@ button[data-start]:disabled {
   cursor: not-allowed;
 }
 
+#datetime-picker:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .timer {
   display: flex;
   gap: 16px;
