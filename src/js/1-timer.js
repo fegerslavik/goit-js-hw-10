@@ -4,6 +4,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const startBtn = document.querySelector('[data-start]');
+const datePickerInput = document.querySelector('#datetime-picker');
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
@@ -64,9 +65,7 @@ function updateUI({ days, hours, minutes, seconds }) {
 
 startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
-  document
-    .querySelector('#datetime-picker')
-    ._flatpickr.set('clickOpens', false);
+  datePickerInput.disabled = true;
 
   timerId = setInterval(() => {
     const delta = userSelectedDate - Date.now();
@@ -74,9 +73,7 @@ startBtn.addEventListener('click', () => {
     if (delta <= 0) {
       clearInterval(timerId);
       updateUI({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      document
-        .querySelector('#datetime-picker')
-        ._flatpickr.set('clickOpens', true);
+      datePickerInput.disabled = false;
       return;
     }
 
